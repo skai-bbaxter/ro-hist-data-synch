@@ -181,14 +181,23 @@ def main() -> None:
 
     most_recent_zero: str | None = None
     for ds, cnt in rows:
-        if cnt == 0:
+        if cnt != 0:
+            continue
+        d_row = date.fromisoformat(ds)
+        if d_start <= d_row <= d_end:
             most_recent_zero = ds
             break
 
     if most_recent_zero is not None:
-        print(f"\nMost recent date with implicit zero count: {most_recent_zero}")
+        print(
+            f"\nMost recent date between {d_start.isoformat()} and {d_end.isoformat()} "
+            f"with implicit zero count: {most_recent_zero}"
+        )
     else:
-        print("\nNo date in range had an implicit zero count.")
+        print(
+            f"\nNo date between {d_start.isoformat()} and {d_end.isoformat()} "
+            "had an implicit zero count."
+        )
 
 
 if __name__ == "__main__":
