@@ -1,0 +1,16 @@
+curl 'https://reports.prod.microservice.skaivision.net/reports/adhoc' \
+  -H 'accept: */*' \
+  -H 'accept-language: en-US,en;q=0.7' \
+  -H 'content-type: application/json' \
+  -H 'origin: https://internaltools.skaivision.net' \
+  -H 'priority: u=1, i' \
+  -H 'referer: https://internaltools.skaivision.net/' \
+  -H 'sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Brave";v="146"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "macOS"' \
+  -H 'sec-fetch-dest: empty' \
+  -H 'sec-fetch-mode: cors' \
+  -H 'sec-fetch-site: same-site' \
+  -H 'sec-gpc: 1' \
+  -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36' \
+  --data-raw '{"dataSource":"prod_automotive_services","repository":"dms_repair_orders","queryLanguage":"MONGO_AGGREGATE","query":[{"$match":{"organizationId":"11f0e04e-f09c-1ec9-b23b-0affcfc7e79f","createdTimestampUTCEpochMilli":{"$gte":1775016000000,"$lt":1775793599000}}},{"$group":{"_id":{"organizationId":"$organizationId","dmsProvider":"$dmsProvider","date":{"$dateToString":{"format":"%Y-%m-%d","date":{"$toDate":"$createdTimestampUTCEpochMilli"}}}},"count":{"$sum":1}}},{"$project":{"_id":0,"organizationId":"$_id.organizationId","dmsProvider":"$_id.dmsProvider","date":"$_id.date","count":"$count"}},{"$sort":{"date":-1}}],"metadata":{"allowDiskUse":true}}'
