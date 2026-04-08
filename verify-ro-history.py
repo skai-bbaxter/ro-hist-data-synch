@@ -18,6 +18,11 @@ API_URL = "https://reports.prod.microservice.skaivision.net/reports/adhoc"
 NY = ZoneInfo("America/New_York")
 
 
+def is_utc_sunday(d: date) -> bool:
+    """True if d is a Sunday on the UTC calendar (matches API date buckets)."""
+    return d.weekday() == 6
+
+
 def parse_mm_dd_yyyy(s: str) -> date:
     return datetime.strptime(s, "%m-%d-%Y").date()
 
@@ -177,18 +182,36 @@ def main() -> None:
 
     print(f"{'Date':<24}{'Count':>8}")
     for ds, cnt in rows:
+        d_row = date.fromisoformat(ds)
+        if cnt == 0 and is_utc_sunday(d_row):
+            continue
         print(f"{ds:<24}{cnt:>8}")
+
+    zero_dates_in_range: list[date] = []
+    for ds, cnt in rows:
+        if cnt != 0:
+            continue
+        d_row = date.fromisoformat(ds)
+        if d_start <= d_row <= d_end:
+            zero_dates_in_range.append(d_row)
+
+    every_zero_is_sunday = (
+        len(zero_dates_in_range) > 0
+        and all(is_utc_sunday(d) for d in zero_dates_in_range)
+    )
 
     most_recent_zero: str | None = None
     for ds, cnt in rows:
         if cnt != 0:
             continue
         d_row = date.fromisoformat(ds)
-        if d_start <= d_row <= d_end:
+        if d_start <= d_row <= d_end and not is_utc_sunday(d_row):
             most_recent_zero = ds
             break
 
-    if most_recent_zero is not None:
+    if every_zero_is_sunday:
+        print("\nEvery zero-count day in the range is a Sunday")
+    elif most_recent_zero is not None:
         print(
             f"\nMost recent date between {d_start.isoformat()} and {d_end.isoformat()} "
             f"with implicit zero count: {most_recent_zero}"
