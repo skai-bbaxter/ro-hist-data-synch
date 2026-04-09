@@ -7,6 +7,7 @@ range with implicit zeros for days absent from the API response.
 from __future__ import annotations
 
 import argparse
+import ast
 import json
 import os
 import sys
@@ -30,6 +31,30 @@ def is_utc_sunday(d: date) -> bool:
 
 def parse_mm_dd_yyyy(s: str) -> date:
     return datetime.strptime(s, "%m-%d-%Y").date()
+
+
+def parse_excluded_days_from_env(raw: str | None) -> frozenset[date]:
+    """Parse EXCLUDED_DAYS from env as a Python list literal of ISO date strings."""
+    if raw is None or not str(raw).strip():
+        return frozenset()
+    try:
+        value = ast.literal_eval(str(raw).strip())
+    except (ValueError, SyntaxError) as e:
+        print(
+            f"EXCLUDED_DAYS must be a valid Python literal (list of ISO date strings): {e}",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    if not isinstance(value, list):
+        print("EXCLUDED_DAYS must be a list of ISO date strings.", file=sys.stderr)
+        sys.exit(1)
+    out: set[date] = set()
+    for item in value:
+        if not isinstance(item, str):
+            print("EXCLUDED_DAYS list items must be ISO date strings.", file=sys.stderr)
+            sys.exit(1)
+        out.add(date.fromisoformat(item))
+    return frozenset(out)
 
 
 def ny_midnight_to_epoch_ms(d: date) -> int:
@@ -230,6 +255,7 @@ def main() -> None:
     )
     args = parser.parse_args()
     load_dotenv()
+    excluded_days = parse_excluded_days_from_env(os.getenv("EXCLUDED_DAYS"))
 
     d_start = parse_mm_dd_yyyy(args.start_date)
     d_end = parse_mm_dd_yyyy(args.end_date)
@@ -266,6 +292,8 @@ def main() -> None:
     print(f"{'Date':<24}{'Count':>8}")
     for ds, cnt in rows:
         d_row = date.fromisoformat(ds)
+        if d_row in excluded_days:
+            continue
         if cnt == 0 and is_utc_sunday(d_row):
             continue
         print(f"{ds:<24}{cnt:>8}")
@@ -288,7 +316,11 @@ def main() -> None:
         if cnt != 0:
             continue
         d_row = date.fromisoformat(ds)
-        if d_start <= d_row <= d_end and not is_utc_sunday(d_row):
+        if (
+            d_start <= d_row <= d_end
+            and not is_utc_sunday(d_row)
+            and d_row not in excluded_days
+        ):
             most_recent_zero = ds
             break
 
@@ -317,7 +349,7 @@ def main() -> None:
             f"\nMost recent date between {d_start.isoformat()} and {d_end.isoformat()} "
             f"with implicit zero count: {most_recent_zero}"
         )
-        print(f"End date with {buffer_days} over-lap: {overlap_date.isoformat()}")
+        print(f"End date with {buffer_days} day over-lap: {overlap_date.isoformat()}")
     else:
         print(
             f"\nNo date between {d_start.isoformat()} and {d_end.isoformat()} "
