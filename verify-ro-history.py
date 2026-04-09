@@ -57,6 +57,19 @@ def parse_excluded_days_from_env(raw: str | None) -> frozenset[date]:
     return frozenset(out)
 
 
+def parse_zero_day_span_from_env(raw: str | None) -> int:
+    """Parse ZERO_DAY_SPAN; default 1 if missing or invalid (must be >= 1)."""
+    if raw is None or not str(raw).strip():
+        return 1
+    try:
+        v = int(str(raw).strip())
+    except ValueError:
+        return 1
+    if v < 1:
+        return 1
+    return v
+
+
 def ny_midnight_to_epoch_ms(d: date) -> int:
     dt = datetime.combine(d, time.min, tzinfo=NY)
     return int(dt.timestamp() * 1000)
@@ -256,6 +269,7 @@ def main() -> None:
     args = parser.parse_args()
     load_dotenv()
     excluded_days = parse_excluded_days_from_env(os.getenv("EXCLUDED_DAYS"))
+    zero_day_span = parse_zero_day_span_from_env(os.getenv("ZERO_DAY_SPAN"))
 
     d_start = parse_mm_dd_yyyy(args.start_date)
     d_end = parse_mm_dd_yyyy(args.end_date)
@@ -311,16 +325,28 @@ def main() -> None:
         and all(is_utc_sunday(d) for d in zero_dates_in_range)
     )
 
+    def qualifies_zero_count_day(d_row: date) -> bool:
+        if not (d_start <= d_row <= d_end):
+            return False
+        if is_utc_sunday(d_row):
+            return False
+        if d_row in excluded_days:
+            return False
+        return totals.get(d_row.isoformat(), 0) == 0
+
+    def has_zero_day_streak_ending(end: date, span: int) -> bool:
+        for i in range(span):
+            cur = end - timedelta(days=i)
+            if not qualifies_zero_count_day(cur):
+                return False
+        return True
+
     most_recent_zero: str | None = None
     for ds, cnt in rows:
         if cnt != 0:
             continue
         d_row = date.fromisoformat(ds)
-        if (
-            d_start <= d_row <= d_end
-            and not is_utc_sunday(d_row)
-            and d_row not in excluded_days
-        ):
+        if has_zero_day_streak_ending(d_row, zero_day_span):
             most_recent_zero = ds
             break
 
