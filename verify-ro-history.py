@@ -8,13 +8,18 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from datetime import date, datetime, time, timedelta, timezone
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
 
+import requests
+from dotenv import load_dotenv
+
 API_URL = "https://reports.prod.microservice.skaivision.net/reports/adhoc"
+HUBSPOT_API_BASE = "https://api.hubapi.com"
 NY = ZoneInfo("America/New_York")
 
 
@@ -123,6 +128,59 @@ def post_adhoc(body: dict) -> dict:
         raise
 
 
+def org_id_from_hubspot_company_name(company_name: str, token: str) -> str:
+    """Resolve organization id from HubSpot company name (name EQ) and skai_org_id_long."""
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json",
+    }
+    name = company_name.strip()
+    search_url = f"{HUBSPOT_API_BASE}/crm/v3/objects/companies/search"
+    search_payload = {
+        "filterGroups": [
+            {
+                "filters": [
+                    {
+                        "propertyName": "name",
+                        "operator": "EQ",
+                        "value": name,
+                    }
+                ]
+            }
+        ],
+        "properties": ["name"],
+        "limit": 1,
+    }
+    search_response = requests.post(
+        search_url, headers=headers, json=search_payload, timeout=60
+    )
+    search_response.raise_for_status()
+    search_data = search_response.json()
+    results = search_data.get("results") or []
+    if not results:
+        print(
+            f"No company found with name '{name}'",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    company_id = results[0]["id"]
+    company_url = f"{HUBSPOT_API_BASE}/crm/v3/objects/companies/{company_id}"
+    company_response = requests.get(
+        company_url,
+        headers=headers,
+        params={"properties": "skai_org_id_long", "archived": "false"},
+        timeout=60,
+    )
+    company_response.raise_for_status()
+    company_data = company_response.json()
+    props = company_data.get("properties") or {}
+    raw = props.get("skai_org_id_long")
+    if raw is None or (isinstance(raw, str) and not raw.strip()):
+        print("Hubspot error: No skai_org_id_long found", file=sys.stderr)
+        sys.exit(1)
+    return raw.strip() if isinstance(raw, str) else str(raw)
+
+
 def merge_counts(organization_id: str, d_start: date, d_end: date) -> dict[str, int]:
     totals: dict[str, int] = {}
     for first, last in iter_90_day_windows(d_start, d_end):
@@ -158,8 +216,17 @@ def main() -> None:
     )
     parser.add_argument(
         "--organization-id",
-        required=True,
-        help="Organization UUID for the report query.",
+        help=(
+            "Organization UUID for the report query. "
+            "If set, this value is used even when --hs-company-name is also passed."
+        ),
+    )
+    parser.add_argument(
+        "--hs-company-name",
+        help=(
+            "HubSpot company name (exact match on the name property). "
+            "Resolves skai_org_id_long when --organization-id is not provided."
+        ),
     )
     args = parser.parse_args()
 
@@ -169,7 +236,23 @@ def main() -> None:
         print("end-date must be on or after start-date.", file=sys.stderr)
         sys.exit(1)
 
-    totals = merge_counts(args.organization_id, d_start, d_end)
+    if args.organization_id:
+        organization_id = args.organization_id
+    elif args.hs_company_name:
+        load_dotenv()
+        hubspot_token = os.getenv("HUBSPOT_PROD_TOKEN")
+        if not hubspot_token:
+            print("HUBSPOT_PROD_TOKEN not found in .env file", file=sys.stderr)
+            sys.exit(1)
+        organization_id = org_id_from_hubspot_company_name(args.hs_company_name, hubspot_token)
+    else:
+        print(
+            "one of --organization-id or --hs-company-name is required.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+
+    totals = merge_counts(organization_id, d_start, d_end)
     utc_days = utc_dates_covering_ny_range(d_start, d_end)
 
     rows: list[tuple[str, int]] = []
