@@ -229,6 +229,7 @@ def main() -> None:
         ),
     )
     args = parser.parse_args()
+    load_dotenv()
 
     d_start = parse_mm_dd_yyyy(args.start_date)
     d_end = parse_mm_dd_yyyy(args.end_date)
@@ -239,7 +240,6 @@ def main() -> None:
     if args.organization_id:
         organization_id = args.organization_id
     elif args.hs_company_name:
-        load_dotenv()
         hubspot_token = os.getenv("HUBSPOT_PROD_TOKEN")
         if not hubspot_token:
             print("HUBSPOT_PROD_TOKEN not found in .env file", file=sys.stderr)
@@ -295,10 +295,29 @@ def main() -> None:
     if every_zero_is_sunday:
         print("\nEvery zero-count day in the range is a Sunday")
     elif most_recent_zero is not None:
+        raw_buffer = os.getenv("RO_OVERLAP_BUFFER_DAYS")
+        if raw_buffer is None or not str(raw_buffer).strip():
+            print(
+                "RO_OVERLAP_BUFFER_DAYS not set or empty in environment (.env).",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+        try:
+            buffer_days = int(str(raw_buffer).strip())
+        except ValueError:
+            print(
+                "RO_OVERLAP_BUFFER_DAYS must be an integer.",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+        overlap_date = date.fromisoformat(most_recent_zero) + timedelta(
+            days=buffer_days
+        )
         print(
             f"\nMost recent date between {d_start.isoformat()} and {d_end.isoformat()} "
             f"with implicit zero count: {most_recent_zero}"
         )
+        print(f"End date with {buffer_days} over-lap: {overlap_date.isoformat()}")
     else:
         print(
             f"\nNo date between {d_start.isoformat()} and {d_end.isoformat()} "
