@@ -17,6 +17,48 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 VENV_PATH="${SCRIPT_DIR}/.venv"
 PYTHON_VERSION_FILE="${SCRIPT_DIR}/.python-version"
 
+# macOS: ensure Python 3.10.x via Homebrew when .python-version requests 3.10.x (PYTHON overrides).
+ensure_macos_python310() {
+  [[ "$(uname -s)" == "Darwin" ]] || return 0
+  [[ -z "${PYTHON:-}" ]] || return 0
+
+  local spec=""
+  if [[ -f "$PYTHON_VERSION_FILE" ]]; then
+    IFS= read -r spec < "$PYTHON_VERSION_FILE" || spec=""
+    spec="${spec%%[[:space:]]*}"
+  fi
+  [[ "$spec" =~ ^3\.10\. ]] || return 0
+
+  local have_310=false
+  if command -v python3.10 >/dev/null 2>&1; then
+    local mm
+    mm="$(python3.10 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")' 2>/dev/null)" || mm=""
+    [[ "$mm" == "3.10" ]] && have_310=true
+  fi
+  [[ "$have_310" == true ]] && return 0
+
+  if ! command -v brew >/dev/null 2>&1; then
+    cat <<'EOF' >&2
+error: Python 3.10.x is required but python3.10 was not found, and Homebrew is not installed.
+
+Install Homebrew from https://brew.sh/ , then run this script again. It will run: brew install python@3.10
+
+Or set PYTHON to the path to a Python 3.10.x interpreter.
+EOF
+    exit 1
+  fi
+
+  echo "Installing Python 3.10 via Homebrew: brew install python@3.10"
+  brew install python@3.10
+
+  if ! command -v python3.10 >/dev/null 2>&1; then
+    echo "error: brew install python@3.10 finished but python3.10 is still not on PATH. Ensure $(brew --prefix 2>/dev/null)/bin is on PATH." >&2
+    exit 1
+  fi
+}
+
+ensure_macos_python310
+
 # Resolve which python to use: PYTHON env, then .python-version -> python3.N, else python3.
 resolve_python() {
   if [[ -n "${PYTHON:-}" ]]; then
