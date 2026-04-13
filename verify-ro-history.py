@@ -9,7 +9,9 @@ from __future__ import annotations
 import argparse
 import ast
 import json
+import math
 import os
+import statistics
 import sys
 from datetime import date, datetime, time, timedelta, timezone
 from urllib.error import HTTPError, URLError
@@ -238,6 +240,78 @@ def merge_counts(organization_id: str, d_start: date, d_end: date) -> dict[str, 
     return totals
 
 
+def _linear_percentile(sorted_values: list[int], p: float) -> float:
+    """Return the p-th percentile (0–100) using linear interpolation between ranks."""
+    n = len(sorted_values)
+    if n == 1:
+        return float(sorted_values[0])
+    pos = (p / 100.0) * (n - 1)
+    lo = int(math.floor(pos))
+    hi = int(math.ceil(pos))
+    if lo == hi:
+        return float(sorted_values[lo])
+    return float(
+        sorted_values[lo]
+        + (sorted_values[hi] - sorted_values[lo]) * (pos - lo)
+    )
+
+
+def print_displayed_count_statistics(counts: list[int]) -> None:
+    """Print mean, median, mode, daily average, and percentiles for displayed counts."""
+    print("\n--- RO count statistics ---")
+    if not counts:
+        print("No displayed days; no statistics.")
+        return
+
+    sorted_counts = sorted(counts)
+    mean_val = statistics.mean(counts)
+    median_val = statistics.median(counts)
+    modes = statistics.multimode(counts)
+    mode_val = modes[0]
+
+    active = [c for c in counts if c > 0]
+    if active:
+        daily_avg = statistics.mean(active)
+        daily_avg_str = f"{daily_avg:.6g}"
+    else:
+        daily_avg_str = "n/a (no days with activity)"
+
+    print(f"Mean:   {mean_val:.6g}")
+    print(f"Median: {median_val:.6g}")
+    print(f"Mode:   {mode_val}")
+    print(f"Daily average (mean of counts on days with activity): {daily_avg_str}")
+
+    # Min/max and percentiles use only days with count > 0 so zeros in the displayed
+    # range do not dominate the distribution (same population as daily average).
+    print(
+        "Percentiles, days with activity only (min, 10, 25, 50, 75, 90, 95, 99, max):"
+    )
+    if not active:
+        print("  n/a (no days with activity)")
+        return
+    sorted_active = sorted(active)
+    pct_specs = [
+        ("min", None),
+        ("p10", 10.0),
+        ("p25", 25.0),
+        ("p50", 50.0),
+        ("p75", 75.0),
+        ("p90", 90.0),
+        ("p95", 95.0),
+        ("p99", 99.0),
+        ("max", None),
+    ]
+    for label, p in pct_specs:
+        if label == "min":
+            val = sorted_active[0]
+        elif label == "max":
+            val = sorted_active[-1]
+        else:
+            assert p is not None
+            val = _linear_percentile(sorted_active, p)
+        print(f"  {label}: {val:.6g}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Verify repair-order history by day over a date range."
@@ -265,6 +339,11 @@ def main() -> None:
             "HubSpot company name (exact match on the name property). "
             "Resolves skai_org_id_long when --organization-id is not provided."
         ),
+    )
+    parser.add_argument(
+        "--stats",
+        action="store_true",
+        help="After all other output, print statistics for displayed RO counts.",
     )
     args = parser.parse_args()
     load_dotenv()
@@ -303,6 +382,7 @@ def main() -> None:
 
     rows.sort(key=lambda x: x[0], reverse=True)
 
+    displayed_counts: list[int] = []
     print(f"{'Date':<24}{'Count':>8}")
     for ds, cnt in rows:
         d_row = date.fromisoformat(ds)
@@ -310,6 +390,7 @@ def main() -> None:
             continue
         if cnt == 0 and is_utc_sunday(d_row):
             continue
+        displayed_counts.append(cnt)
         print(f"{ds:<24}{cnt:>8}")
 
     zero_dates_in_range: list[date] = []
@@ -381,6 +462,9 @@ def main() -> None:
             f"\nNo date between {d_start.isoformat()} and {d_end.isoformat()} "
             "had an implicit zero count."
         )
+
+    if args.stats:
+        print_displayed_count_statistics(displayed_counts)
 
 
 if __name__ == "__main__":
