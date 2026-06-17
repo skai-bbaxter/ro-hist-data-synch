@@ -1,0 +1,14 @@
+
+
+Process Steps
+1 - Authenticate to Outlook
+2 - Look in the folder "Submit RO History" for new emails
+3 - Emails we are looking for:
+	- From: noreply@notifications.hubspot.com
+	- Subject containing "Onboarding: Submit Jira for RO History"
+	- The Subject suffix (the portion after the "-" will contain the Deal Name)
+4 - From the body of the email, retreive the value for the "Skaibox ID"
+5 - Using the Skaibox ID search hubspot for the Company with this Skaibox ID. 
+	- If multiple Companies returned, throw exception "Multiple Hubspot companies found for Skaibox ID" and exit
+	- If no Companies returned, throw exception "No Hubspot companies found for Skaibox ID" and exit
+6 - 
