@@ -164,8 +164,8 @@ def get_company_info(company_identifier, hubspot_token):
         hs_id = company_data["id"]
         print(f"\nname:{hs_name}  id:{hs_id}")
         
-        print("✔ Full Company Data:")
-        print(json.dumps(company_data, indent=4, default=custom_json_serializer))
+        # print("✔ Full Company Data:")
+        # print(json.dumps(company_data, indent=4, default=custom_json_serializer))
         
     except Exception as e:
         print(f"❌ Error retrieving full company data: {e}")

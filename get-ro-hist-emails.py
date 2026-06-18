@@ -25,6 +25,7 @@ GRAPH_API_DEFAULT = "https://graph.microsoft.com/v1.0"
 SKAINET_HC_URL = "https://healthcheck.prod.microservice.skaivision.net/skaibox/summary"
 SKAINET_PC_BASE = "https://productcatalog.prod.microservice.skaivision.net/catalog/config/orgs"
 SKAIBOX_ID_LABEL = "Skaibox ID:"
+ACTIVATION_EMAIL_FOLDERS = ("Inbox", "FieldOps")
 
 
 def _required_env(name):
@@ -39,10 +40,6 @@ def _env_value(name, default=None):
     if value is None:
         return None
     return value.split("#", 1)[0].strip().strip('"')
-
-
-def _odata_string(value):
-    return "'" + value.replace("'", "''") + "'"
 
 
 def get_outlook_scopes():
@@ -105,18 +102,99 @@ def get_access_token(application_id, scopes):
     raise Exception(f"Failed to acquire access token: {error_message}")
 
 
-def graph_get(access_token, url, params=None):
+def graph_get(access_token, url, params=None, extra_headers=None):
+    headers = {
+        "Authorization": f"Bearer {access_token}",
+        "Accept": "application/json",
+    }
+    if extra_headers:
+        headers.update(extra_headers)
     response = requests.get(
         url,
-        headers={
-            "Authorization": f"Bearer {access_token}",
-            "Accept": "application/json",
-        },
+        headers=headers,
         params=params,
         timeout=30,
     )
     response.raise_for_status()
     return response.json()
+
+
+def _odata_string(value):
+    return "'" + value.replace("'", "''") + "'"
+
+
+def graph_search_messages(access_token, url, search_query, select, top=25):
+    payload = graph_get(
+        access_token,
+        url,
+        params={
+            "$search": f'"{search_query}"',
+            "$select": select,
+            "$top": str(top),
+        },
+        extra_headers={"ConsistencyLevel": "eventual"},
+    )
+    return payload.get("value", [])
+
+
+def _message_from_address(message):
+    from_obj = message.get("from") or {}
+    return (from_obj.get("emailAddress") or {}).get("address") or ""
+
+
+def list_activation_candidates_in_folder(
+    access_token, graph_api, user_email, folder_id, sender, subject, page_size=50
+):
+    messages_url = f"{graph_api}/users/{user_email}/mailFolders/{folder_id}/messages"
+    filter_expr = (
+        f"from/emailAddress/address eq {_odata_string(sender)} "
+        f"and subject eq {_odata_string(subject)}"
+    )
+    payload = graph_get(
+        access_token,
+        messages_url,
+        params={
+            "$filter": filter_expr,
+            "$select": "id,subject,receivedDateTime,from,parentFolderId",
+            "$orderby": "receivedDateTime desc",
+            "$top": str(page_size),
+        },
+        extra_headers={"ConsistencyLevel": "eventual"},
+    )
+    return payload.get("value", [])
+
+
+def _search_activation_candidates(
+    access_token,
+    graph_api,
+    user_email,
+    sender,
+    subject,
+    dms_subscription_id,
+    search_folders,
+):
+    messages_url = f"{graph_api}/users/{user_email}/messages"
+    search_query = f"body:{dms_subscription_id}"
+    try:
+        return graph_search_messages(
+            access_token,
+            messages_url,
+            search_query,
+            select="id,subject,receivedDateTime,from,parentFolderId",
+        )
+    except requests.HTTPError as exc:
+        if exc.response is None or exc.response.status_code != 400:
+            raise
+        logger.warning("Indexed mailbox search failed; using filtered folder lookup")
+
+    candidates = []
+    for folder in search_folders:
+        candidates.extend(
+            list_activation_candidates_in_folder(
+                access_token, graph_api, user_email, folder["id"], sender, subject
+            )
+        )
+    return candidates
 
 
 def find_mail_folder(access_token, graph_api, user_email, folder_name):
@@ -238,6 +316,62 @@ def get_dms_subscription_id(org_long_id, skaibox_id):
     exit_with_error(f"No DMS Subscription ID found for Skaibox ID: {skaibox_id}")
 
 
+def get_activation_search_folders(access_token, graph_api, user_email):
+    folders = []
+    for folder_name in ACTIVATION_EMAIL_FOLDERS:
+        if folder_name.casefold() == "inbox":
+            url = f"{graph_api}/users/{user_email}/mailFolders/inbox"
+            folders.append(
+                graph_get(access_token, url, params={"$select": "id,displayName"})
+            )
+        else:
+            folders.append(
+                find_mail_folder(access_token, graph_api, user_email, folder_name)
+            )
+    return folders
+
+
+def find_activation_email(
+    access_token, graph_api, user_email, sender, subject, dms_subscription_id
+):
+    matches = []
+    search_folders = get_activation_search_folders(access_token, graph_api, user_email)
+    allowed_folder_ids = {folder["id"] for folder in search_folders}
+    candidates = _search_activation_candidates(
+        access_token,
+        graph_api,
+        user_email,
+        sender,
+        subject,
+        dms_subscription_id,
+        search_folders,
+    )
+
+    for message in candidates:
+        if message.get("parentFolderId") not in allowed_folder_ids:
+            continue
+        if _message_from_address(message).casefold() != sender.casefold():
+            continue
+        if message.get("subject") != subject:
+            continue
+
+        body_text = get_message_body(access_token, graph_api, user_email, message["id"])
+        if dms_subscription_id in _body_to_searchable_text(body_text):
+            matches.append(message)
+
+    if not matches:
+        exit_with_error(
+            f"No activation email found for DMS Subscription ID: {dms_subscription_id}"
+        )
+
+    if len(matches) > 1:
+        exit_with_error(
+            f"Multiple activation emails found for DMS Subscription ID: {dms_subscription_id}"
+        )
+
+    return matches[0]
+
+
 def company_name_from_subject(subject, subject_prefix):
     if not subject.startswith(subject_prefix):
         return None
@@ -265,6 +399,8 @@ def main():
     folder_name = _required_env("OUTLOOK_FOLDER_NAME")
     subject_prefix = _required_env("OUTLOOK_EMAIL_SUBJECT_PREFIX")
     user_email = _required_env("OUTLOOK_USER_EMAIL")
+    activation_sender = _required_env("ACTIVATION_EMAIL_SENDER")
+    activation_subject = _required_env("ACTIVATION_EMAIL_SUBJECT")
     scopes = get_outlook_scopes()
 
     access_token = get_access_token(
@@ -291,6 +427,18 @@ def main():
         print(f"Subject: {subject}")
         print(f"Skaibox ID: {skaibox_id}")
         print(f"DMS Subscription ID: {dms_subscription_id}")
+
+        activation_email = find_activation_email(
+            access_token,
+            graph_api,
+            user_email,
+            activation_sender,
+            activation_subject,
+            dms_subscription_id,
+        )
+        print(
+            f"DMS Activation email found. DMS Activation Date: {activation_email.get('receivedDateTime', '')}"
+        )
 
         return_code = call_hubspot_company_script(company_name)
         if return_code == 0:
