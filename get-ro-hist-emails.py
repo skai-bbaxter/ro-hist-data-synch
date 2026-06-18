@@ -5,6 +5,8 @@ import os
 import re
 import subprocess
 import sys
+from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 import msal
 import requests
@@ -26,6 +28,7 @@ SKAINET_HC_URL = "https://healthcheck.prod.microservice.skaivision.net/skaibox/s
 SKAINET_PC_BASE = "https://productcatalog.prod.microservice.skaivision.net/catalog/config/orgs"
 SKAIBOX_ID_LABEL = "Skaibox ID:"
 ACTIVATION_EMAIL_FOLDERS = ("Inbox", "FieldOps")
+NY = ZoneInfo("America/New_York")
 
 
 def _required_env(name):
@@ -393,6 +396,70 @@ def call_hubspot_company_script(company_name):
     return subprocess.run([sys.executable, script_path, company_name], check=False).returncode
 
 
+def _activation_date_ny(received_datetime):
+    if not received_datetime:
+        return None
+
+    normalized = received_datetime.replace("Z", "+00:00")
+    dt = datetime.fromisoformat(normalized)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(NY).date()
+
+
+def _verify_ro_history_dates(activation_date):
+    try:
+        start_date = activation_date.replace(year=activation_date.year - 2)
+    except ValueError:
+        start_date = activation_date.replace(year=activation_date.year - 2, day=28)
+    end_date = datetime.now(NY).date()
+    return start_date.strftime("%m-%d-%Y"), end_date.strftime("%m-%d-%Y")
+
+
+def call_verify_ro_history(company_name, received_datetime):
+    script_path = os.path.join(os.path.dirname(__file__), "verify-ro-history.py")
+    activation_date = _activation_date_ny(received_datetime)
+    if activation_date is None:
+        logger.warning(
+            "Skipping verify-ro-history.py for company %s: missing activation date",
+            company_name,
+        )
+        return 1
+
+    start_date, end_date = _verify_ro_history_dates(activation_date)
+    logger.info(
+        "Calling verify-ro-history.py for company: %s (%s to %s)",
+        company_name,
+        start_date,
+        end_date,
+    )
+    result = subprocess.run(
+        [
+            sys.executable,
+            script_path,
+            "--hs-company-name",
+            company_name,
+            "--start-date",
+            start_date,
+            "--end-date",
+            end_date,
+            "--stats",
+        ],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.stdout:
+        sys.stdout.write(result.stdout)
+        if not result.stdout.endswith("\n"):
+            sys.stdout.write("\n")
+    if result.stderr:
+        sys.stderr.write(result.stderr)
+        if not result.stderr.endswith("\n"):
+            sys.stderr.write("\n")
+    return result.returncode
+
+
 def main():
     graph_api = _env_value("OUTLOOK_GRAPH_API", GRAPH_API_DEFAULT) or GRAPH_API_DEFAULT
     application_id = _required_env("OUTLOOK_CLIENT_ID")
@@ -447,6 +514,17 @@ def main():
             logger.warning(
                 "get-hubspot-company-info.py exited with status %s for company: %s",
                 return_code,
+                company_name,
+            )
+
+        verify_return_code = call_verify_ro_history(
+            company_name,
+            activation_email.get("receivedDateTime", ""),
+        )
+        if verify_return_code != 0:
+            logger.warning(
+                "verify-ro-history.py exited with status %s for company: %s",
+                verify_return_code,
                 company_name,
             )
 
