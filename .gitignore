@@ -3,6 +3,7 @@ check-branch-status.sh
 push-to-enterprise.sh
 remove-venv-from-git.sh
 setup-enterprise-remote.sh
+refresh_token.txt
 
 # Image directory
 textConcentImages

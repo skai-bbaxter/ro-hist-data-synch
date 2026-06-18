@@ -1,0 +1,814 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "OK",
+  "startIndex": 0,
+  "pageSize": 1,
+  "totalItems": 1,
+  "items": [
+    {
+      "id": "EfFCi-PPgoK4HAr_-b3vXQ",
+      "name": "Bonnell Ford",
+      "description": "NOT_DEFINED_1777330398816",
+      "statuses": [
+        {
+          "category": "DANGER",
+          "level": "LEVEL_3",
+          "reasons": [
+            {
+              "code": "DATA_OFFER_SESSIONS_TOO_FEW",
+              "message": "Offer sessions are below the expected amount",
+              "level": "LEVEL_3",
+              "severity": 23007,
+              "category": "WARNING"
+            }
+          ],
+          "timestampUTC": "2026-06-17T00:00:00Z",
+          "timestampUTCEpochMilli": 1781654400000
+        }
+      ],
+      "organization": {
+        "id": "EfFCiTINay-4HAr_-b3vXQ",
+        "name": "Bonnell Ford",
+        "longId": "11f14289-320d-6b2f-b81c-0afff9bdef5d"
+      },
+      "details": {
+        "id": "EfFCi-PPgoK4HAr_-b3vXQ",
+        "name": "Bonnell Ford",
+        "description": "NOT_DEFINED_1777330398816",
+        "organization": {
+          "id": "EfFCiTINay-4HAr_-b3vXQ",
+          "name": "Bonnell Ford",
+          "longId": "11f14289-320d-6b2f-b81c-0afff9bdef5d",
+          "hoursOfOperation": {
+            "sunday": [],
+            "monday": [
+              {
+                "start": "07:00:00",
+                "end": "18:00:00"
+              }
+            ],
+            "tuesday": [
+              {
+                "start": "07:00:00",
+                "end": "18:00:00"
+              }
+            ],
+            "wednesday": [
+              {
+                "start": "07:00:00",
+                "end": "18:00:00"
+              }
+            ],
+            "thursday": [
+              {
+                "start": "07:00:00",
+                "end": "18:00:00"
+              }
+            ],
+            "friday": [
+              {
+                "start": "07:00:00",
+                "end": "18:00:00"
+              }
+            ],
+            "saturday": [
+              {
+                "start": "07:00:00",
+                "end": "15:00:00"
+              }
+            ],
+            "zoneId": "America/New_York"
+          },
+          "mailingAddress": {
+            "displayAddress": "353 Cambridge St, Winchester, MA 01890",
+            "line1": "353 Cambridge St",
+            "city": "Winchester",
+            "state": "MA",
+            "postalCode": "01890"
+          }
+        },
+        "heartbeat": {
+          "status": "ALLOWED_OFFLINE",
+          "ageSinceLastUpdateMilli": -1
+        },
+        "clientStatus": "ONLINE",
+        "crmCompany": {
+          "url": "https://app.hubspot.com/contacts/22669654/company/26921622556",
+          "crmId": "26921622556",
+          "status": "BILLING",
+          "dealerGroup": "",
+          "accountManager": "1799641312",
+          "components": [
+            {
+              "name": "Bonnell Ford"
+            }
+          ],
+          "notes": [],
+          "tickets": []
+        },
+        "billing": false,
+        "billingStatus": "BILLING",
+        "licenseKey": "A1+fPjQmgUN5bt1t+9tv8cOTZt6LrO5inCy0sc3yMbc",
+        "machineType": "OTHER",
+        "macAddresses": [
+          "00:00:00:00:00:00"
+        ],
+        "bdatImageInfo": "",
+        "bdatBuildInfo": "",
+        "skaiboxStats": {
+          "info": {
+            "monitored": false,
+            "bdatImage": "",
+            "bdatEntryPoint": "",
+            "bdatBuildVersion": "",
+            "cpuModel": "",
+            "cpuMicrocode": "",
+            "cpuCount": 0,
+            "dockerVersion": "",
+            "kernelVersion": "",
+            "linuxImage": "",
+            "ramTotal": "",
+            "machineType": "",
+            "nameServers": [],
+            "nvccVersion": "",
+            "nvidiaCtkVersion": "",
+            "patches": [],
+            "systemUptime": "",
+            "utcTime": "",
+            "dealerTime": "",
+            "dealerTimezone": "",
+            "dealerStartProduction": "",
+            "dealerEndProduction": "",
+            "tenantName": "",
+            "tenantId": "",
+            "skaiboxId": "",
+            "cpuTemperature": "",
+            "cpuUtilization": "",
+            "ramUtilization": "",
+            "gpuTemperature": "",
+            "gpuUtilization": "",
+            "gpuMemoryUtilization": "",
+            "gpuModel": "",
+            "gpuMemory": "",
+            "gpuDriver": "",
+            "cudaVersion": "",
+            "eventsFired": 0
+          },
+          "checks": {
+            "machine": {
+              "kernelVersion": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "linuxImage": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "cpuTemperature": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "ramUtilization": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "gpuTemperature": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "gpuUtilization": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "gpuMemoryUtilization": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "networking": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "secureBoot": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "segfaultCheck": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "splitLockCheck": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "videoFolderPermissions": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "gpuAccessible": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "validGpuModel": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "validGpuMemory": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "machineType": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "dnsServerGoogleAddress": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "skaiboxConfigStructure": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "gpuReadyState": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "gpuResetRequired": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              }
+            },
+            "daemon": {
+              "daemonReachable": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "skaiboxDaemonContainerUp": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "skaiboxDaemonContainerRestarting": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              }
+            },
+            "bdat": {
+              "sepConfigExists": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "sepConfigValidJson": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "sepConfigValidValues": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "sepConfigPlaterecFlagCorrect": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "cameraConfigsExists": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "cameraConfigsValidJson": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "cameraConfigsValidValues": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "camerasOnline": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "skaiboxAiContainerUp": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "skaiboxAiContainerRestarting": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "skaiboxAiContainerTimeUp": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "errorLog": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "skaiboxAiDevLatest": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "bdatOnGpu": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "yoloPtFile": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "yoloPtFileBlur": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "eventFiring": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "numberOfEventsForDay": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              }
+            },
+            "plateRec": {
+              "skaiboxAiLprPlaterecContainerUp": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "skaiboxAiLprPlaterecContainerRestarting": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "skaiboxAiLprPlaterecContainerErrors": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              },
+              "platerecOnGpu": {
+                "category": "UNKNOWN",
+                "reasons": [],
+                "message": "Message value was not mapped"
+              }
+            }
+          },
+          "status": {
+            "category": "UNKNOWN",
+            "reasons": []
+          }
+        },
+        "network": {
+          "vpnType": "PROD",
+          "vpnUserId": "NOT_DEFINED_1777330398816",
+          "vpnIpAddress": "0.0.0.0",
+          "publicIpAddress": "0.0.0.0",
+          "status": "UNKNOWN",
+          "monitored": false,
+          "lastUpdatedUTC": "2026-06-17T20:00:14.982608842Z"
+        },
+        "cameras": [],
+        "labels": [],
+        "offlineInstances": [],
+        "orgUserActivityMetrics": {
+          "orgUserActivity": [
+            0,
+            1,
+            2,
+            0,
+            1,
+            1,
+            1,
+            2,
+            1,
+            2,
+            1,
+            2,
+            1,
+            1,
+            2,
+            1,
+            1,
+            2,
+            1,
+            2,
+            1,
+            1,
+            1,
+            2,
+            2,
+            1,
+            2,
+            1,
+            1,
+            2,
+            2
+          ],
+          "orgUserActivityRegression": -0.01668520578420467,
+          "orgUserActivityMean": 1.3666666666666667
+        },
+        "orgDailySummaryHourlyHistory": {
+          "records": [
+            {
+              "date": "2026-06-17",
+              "hour": 19,
+              "aiEngineInstances": [],
+              "aiEngineInstancesCount": 0,
+              "triggersInstances": [],
+              "triggersInstancesCount": 0,
+              "tradeOffersSentCount": 0
+            },
+            {
+              "date": "2026-06-10",
+              "hour": 19,
+              "aiEngineInstances": [],
+              "aiEngineInstancesCount": 0,
+              "triggersInstances": [],
+              "triggersInstancesCount": 0,
+              "tradeOffersSentCount": 0
+            },
+            {
+              "date": "2026-06-03",
+              "hour": 19,
+              "aiEngineInstances": [],
+              "aiEngineInstancesCount": 0,
+              "triggersInstances": [],
+              "triggersInstancesCount": 0,
+              "tradeOffersSentCount": 0
+            },
+            {
+              "date": "2026-05-27",
+              "hour": 19,
+              "aiEngineInstances": [],
+              "aiEngineInstancesCount": 0,
+              "triggersInstances": [],
+              "triggersInstancesCount": 0,
+              "tradeOffersSentCount": 0
+            },
+            {
+              "date": "2026-05-20",
+              "hour": 19,
+              "aiEngineInstances": [],
+              "aiEngineInstancesCount": 0,
+              "triggersInstances": [],
+              "triggersInstancesCount": 0,
+              "tradeOffersSentCount": 0
+            },
+            {
+              "date": "2026-05-13",
+              "hour": 19,
+              "aiEngineInstances": [],
+              "aiEngineInstancesCount": 0,
+              "triggersInstances": [],
+              "triggersInstancesCount": 0,
+              "tradeOffersSentCount": 0
+            },
+            {
+              "date": "2026-05-06",
+              "hour": 19,
+              "aiEngineInstances": [],
+              "aiEngineInstancesCount": 0,
+              "triggersInstances": [],
+              "triggersInstancesCount": 0,
+              "tradeOffersCount": 1,
+              "tradeOffersSentCount": 1
+            },
+            {
+              "date": "2026-04-29",
+              "hour": 19,
+              "aiEngineInstances": [],
+              "aiEngineInstancesCount": 0,
+              "triggersInstances": [],
+              "triggersInstancesCount": 0,
+              "tradeOffersSentCount": 0
+            }
+          ]
+        }
+      },
+      "integrations": [
+        {
+          "integrationType": "DMS",
+          "status": {
+            "category": "SAFE",
+            "level": "LEVEL_0",
+            "reasons": [
+              {
+                "code": "NO_ISSUES",
+                "message": "No issues found",
+                "level": "LEVEL_0",
+                "severity": 10000,
+                "category": "SAFE"
+              }
+            ],
+            "timestampUTC": "2026-06-17T20:06:43.813922855Z",
+            "timestampUTCEpochMilli": 1781726803813
+          },
+          "vendor": "CDK",
+          "measurements": [
+            {
+              "reasons": [
+                {
+                  "code": "NO_ISSUES",
+                  "message": "No issues found",
+                  "level": "LEVEL_0",
+                  "severity": 10000,
+                  "category": "SAFE"
+                }
+              ],
+              "timestampUTC": "2026-06-17T00:00:00Z",
+              "timestampUTCEpochMilli": 1781654400000,
+              "value": 78,
+              "unitType": "COUNT"
+            },
+            {
+              "reasons": [
+                {
+                  "code": "NO_ISSUES",
+                  "message": "No issues found",
+                  "level": "LEVEL_0",
+                  "severity": 10000,
+                  "category": "SAFE"
+                }
+              ],
+              "timestampUTC": "2026-06-16T00:00:00Z",
+              "timestampUTCEpochMilli": 1781568000000,
+              "value": 58,
+              "unitType": "COUNT"
+            }
+          ],
+          "type": "DMS",
+          "category": "DMS"
+        }
+      ],
+      "features": [
+        {
+          "featureType": "TEXT_OFFERS",
+          "status": {
+            "category": "WARNING",
+            "level": "LEVEL_3",
+            "reasons": [
+              {
+                "code": "DATA_OFFER_SESSIONS_TOO_FEW",
+                "message": "Offer sessions are below the expected amount",
+                "level": "LEVEL_3",
+                "severity": 23007,
+                "category": "WARNING"
+              }
+            ]
+          },
+          "measurements": [
+            {
+              "reasons": [
+                {
+                  "code": "DATA_OFFER_SESSIONS_TOO_FEW",
+                  "message": "Offer sessions are below the expected amount",
+                  "level": "LEVEL_3",
+                  "severity": 23007,
+                  "category": "WARNING"
+                }
+              ],
+              "timestampUTC": "2026-06-16T00:00:00Z",
+              "timestampUTCEpochMilli": 1781568000000,
+              "value": 14,
+              "unitType": "COUNT"
+            },
+            {
+              "reasons": [
+                {
+                  "code": "DATA_OFFER_SESSIONS_TOO_FEW",
+                  "message": "Offer sessions are below the expected amount",
+                  "level": "LEVEL_3",
+                  "severity": 23007,
+                  "category": "WARNING"
+                }
+              ],
+              "timestampUTC": "2026-06-17T00:00:00Z",
+              "timestampUTCEpochMilli": 1781654400000,
+              "value": 12,
+              "unitType": "COUNT"
+            }
+          ],
+          "hasNotificationReceivers": true,
+          "type": "TEXT_OFFERS"
+        }
+      ],
+      "links": [
+        {
+          "id": "BADGE-BILLING-LARGE",
+          "name": "BILLING LARGE",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=BILLING&size=LARGE"
+        },
+        {
+          "id": "BADGE-BILLING-SMALL",
+          "name": "BILLING SMALL",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=BILLING&size=SMALL"
+        },
+        {
+          "id": "BADGE-CAMERAS-LARGE",
+          "name": "CAMERAS LARGE",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=CAMERAS&size=LARGE"
+        },
+        {
+          "id": "BADGE-CAMERAS-SMALL",
+          "name": "CAMERAS SMALL",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=CAMERAS&size=SMALL"
+        },
+        {
+          "id": "BADGE-CPU-LARGE",
+          "name": "CPU LARGE",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=CPU&size=LARGE"
+        },
+        {
+          "id": "BADGE-CPU-SMALL",
+          "name": "CPU SMALL",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=CPU&size=SMALL"
+        },
+        {
+          "id": "BADGE-FEATURE-LARGE-TEXT_OFFERS",
+          "name": "BADGE FEATURE LARGE TEXT_OFFERS",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=FEATURE&size=LARGE&featureType=TEXT_OFFERS"
+        },
+        {
+          "id": "BADGE-FEATURE-SMALL-TEXT_OFFERS",
+          "name": "BADGE FEATURE SMALL TEXT_OFFERS",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=FEATURE&size=SMALL&featureType=TEXT_OFFERS"
+        },
+        {
+          "id": "BADGE-GENERAL-LARGE",
+          "name": "GENERAL LARGE",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=GENERAL&size=LARGE"
+        },
+        {
+          "id": "BADGE-GENERAL-SMALL",
+          "name": "GENERAL SMALL",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=GENERAL&size=SMALL"
+        },
+        {
+          "id": "BADGE-HEALTH-LARGE",
+          "name": "HEALTH LARGE",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=HEALTH&size=LARGE"
+        },
+        {
+          "id": "BADGE-HEALTH-SMALL",
+          "name": "HEALTH SMALL",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=HEALTH&size=SMALL"
+        },
+        {
+          "id": "BADGE-INCIDENTS-LARGE",
+          "name": "INCIDENTS LARGE",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=INCIDENTS&size=LARGE"
+        },
+        {
+          "id": "BADGE-INCIDENTS-SMALL",
+          "name": "INCIDENTS SMALL",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=INCIDENTS&size=SMALL"
+        },
+        {
+          "id": "BADGE-INTEGRATION-LARGE-BDAT",
+          "name": "INTEGRATION LARGE BDAT",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=INTEGRATION&size=LARGE&integrationType=BDAT"
+        },
+        {
+          "id": "BADGE-INTEGRATION-LARGE-DMS",
+          "name": "INTEGRATION LARGE DMS",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=INTEGRATION&size=LARGE&integrationType=DMS"
+        },
+        {
+          "id": "BADGE-INTEGRATION-LARGE-VIRTUAL_CAMERA",
+          "name": "INTEGRATION LARGE VIRTUAL_CAMERA",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=INTEGRATION&size=LARGE&integrationType=VIRTUAL_CAMERA"
+        },
+        {
+          "id": "BADGE-INTEGRATION-SMALL-BDAT",
+          "name": "INTEGRATION SMALL BDAT",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=INTEGRATION&size=SMALL&integrationType=BDAT"
+        },
+        {
+          "id": "BADGE-INTEGRATION-SMALL-DMS",
+          "name": "INTEGRATION SMALL DMS",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=INTEGRATION&size=SMALL&integrationType=DMS"
+        },
+        {
+          "id": "BADGE-INTEGRATION-SMALL-VIRTUAL_CAMERA",
+          "name": "INTEGRATION SMALL VIRTUAL_CAMERA",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=INTEGRATION&size=SMALL&integrationType=VIRTUAL_CAMERA"
+        },
+        {
+          "id": "BADGE-MONITORED-LARGE",
+          "name": "MONITORED LARGE",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=MONITORED&size=LARGE"
+        },
+        {
+          "id": "BADGE-MONITORED-SMALL",
+          "name": "MONITORED SMALL",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=MONITORED&size=SMALL"
+        },
+        {
+          "id": "BADGE-NAME-LARGE",
+          "name": "NAME LARGE",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=NAME&size=LARGE"
+        },
+        {
+          "id": "BADGE-NAME-SMALL",
+          "name": "NAME SMALL",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=NAME&size=SMALL"
+        },
+        {
+          "id": "BADGE-ONBOARDING-LARGE",
+          "name": "ONBOARDING LARGE",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=ONBOARDING&size=LARGE"
+        },
+        {
+          "id": "BADGE-ONBOARDING-SMALL",
+          "name": "ONBOARDING SMALL",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=ONBOARDING&size=SMALL"
+        },
+        {
+          "id": "BADGE-STATUS-LARGE",
+          "name": "STATUS LARGE",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=STATUS&size=LARGE"
+        },
+        {
+          "id": "BADGE-STATUS-SMALL",
+          "name": "STATUS SMALL",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=STATUS&size=SMALL"
+        },
+        {
+          "id": "BADGE-USER_ACTIVITY-LARGE",
+          "name": "USER_ACTIVITY LARGE",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=USER_ACTIVITY&size=LARGE"
+        },
+        {
+          "id": "BADGE-USER_ACTIVITY-SMALL",
+          "name": "USER_ACTIVITY SMALL",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=USER_ACTIVITY&size=SMALL"
+        },
+        {
+          "id": "BADGE-VPN-LARGE",
+          "name": "VPN LARGE",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=VPN&size=LARGE"
+        },
+        {
+          "id": "BADGE-VPN-SMALL",
+          "name": "VPN SMALL",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/badge?type=VPN&size=SMALL"
+        },
+        {
+          "id": "CAMERA_EDITOR",
+          "name": "Camera Editor",
+          "url": "https://internaltools.skaivision.net/playground/internal/skaiAdminUtilities/index.html?actionId=createOrEditCameras&rooftopId=EfFCiTINay-4HAr_-b3vXQ"
+        },
+        {
+          "id": "STATUS",
+          "name": "Status Page",
+          "url": "/skaibox/summary/EfFCi-PPgoK4HAr_-b3vXQ/status"
+        }
+      ],
+      "productConfiguration": {
+        "id": "f9a5f45a-2300-4481-a028-397f96be569f",
+        "organizationId": "EfFCiTINay-4HAr_-b3vXQ",
+        "products": [],
+        "updatedAt": "2026-06-10T11:12:13.86907436Z"
+      },
+      "lastUpdatedTimestampUTC": "2026-06-17T20:06:01.497Z",
+      "lastUpdatedTimestampUTCEpochMilli": 1781726761497
+    }
+  ]
+}

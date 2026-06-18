@@ -11,4 +11,14 @@ Process Steps
 5 - Using the Skaibox ID search hubspot for the Company with this Skaibox ID. 
 	- If multiple Companies returned, throw exception "Multiple Hubspot companies found for Skaibox ID" and exit
 	- If no Companies returned, throw exception "No Hubspot companies found for Skaibox ID" and exit
-6 - 
+6 - Using the Org Id from , query the Skainet Product catalog and 
+
+
+SCRATCHPAD
+
+Short OrgID: EfFCiTINay-4HAr_-b3vXQ
+Skaibox ID: EfFCi-PPgoK4HAr_-b3vXQ
+Activation Email Date: 5/4/26
+Organization:	BONNELL MOTORS INC.
+Activated:	04 May 2026 by Steven Bonnell
+Subscription ID:	1072e278-e7fc-4dd8-9e0d-7f53eb0be3f8

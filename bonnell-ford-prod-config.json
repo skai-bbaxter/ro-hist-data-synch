@@ -1,0 +1,1775 @@
+{
+  "request": null,
+  "productConfig": {
+    "id": "f9a5f45a-2300-4481-a028-397f96be569f",
+    "organizationId": "EfFCiTINay-4HAr_-b3vXQ",
+    "products": [
+      {
+        "productType": "SKAI_BOX",
+        "productConfigId": "f9a5f45a-2300-4481-a028-397f96be569f",
+        "status": {
+          "currentState": "ENABLED",
+          "statusHistory": []
+        },
+        "createCameraThumbnails": true,
+        "keepTriggersForDays": 30,
+        "keepMetricsForDays": 2147483647,
+        "currency": null,
+        "lastPaymentUTCDate": null,
+        "amount": null,
+        "billingModel": null,
+        "hoursOfOperation": {
+          "sunday": [],
+          "monday": [
+            {
+              "start": "07:00:00",
+              "end": "18:00:00"
+            }
+          ],
+          "tuesday": [
+            {
+              "start": "07:00:00",
+              "end": "18:00:00"
+            }
+          ],
+          "wednesday": [
+            {
+              "start": "07:00:00",
+              "end": "18:00:00"
+            }
+          ],
+          "thursday": [
+            {
+              "start": "07:00:00",
+              "end": "18:00:00"
+            }
+          ],
+          "friday": [
+            {
+              "start": "07:00:00",
+              "end": "18:00:00"
+            }
+          ],
+          "saturday": [
+            {
+              "start": "07:00:00",
+              "end": "15:00:00"
+            }
+          ],
+          "zoneId": "America/New_York"
+        },
+        "triggers": [
+          {
+            "triggerType": "CUSTOMER_DELAY_SALES",
+            "enabled": false,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "CUSTOMER_DELAY_SALES"
+          },
+          {
+            "triggerType": "CUSTOMER_DELAY_SERVICE",
+            "enabled": true,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "CUSTOMER_DELAY_SERVICE"
+          },
+          {
+            "triggerType": "CUSTOMER_FALL",
+            "enabled": true,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "CUSTOMER_FALL"
+          },
+          {
+            "triggerType": "CUSTOMER_GREETED",
+            "enabled": false,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "CUSTOMER_GREETED"
+          },
+          {
+            "triggerType": "CUSTOMER_NOT_GREETED",
+            "enabled": true,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "CUSTOMER_NOT_GREETED"
+          },
+          {
+            "triggerType": "EMPLOYEE_NOT_PRESENT",
+            "enabled": true,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "EMPLOYEE_NOT_PRESENT"
+          },
+          {
+            "triggerType": "FIREARM_DETECTED",
+            "enabled": false,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "FIREARM_DETECTED"
+          },
+          {
+            "triggerType": "GESTURE_DETECTED_SALES",
+            "enabled": false,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "GESTURE_DETECTED_SALES"
+          },
+          {
+            "triggerType": "GESTURE_DETECTED_SERVICE",
+            "enabled": true,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "GESTURE_DETECTED_SERVICE"
+          },
+          {
+            "triggerType": "HANDGUN_DETECTION",
+            "enabled": false,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "HANDGUN_DETECTION"
+          },
+          {
+            "triggerType": "HUMAN_DETECTED",
+            "enabled": false,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "HUMAN_DETECTED"
+          },
+          {
+            "triggerType": "NOTIFY_SERVICE_ADVISOR",
+            "enabled": false,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "minLprDetectionConfidence": 0.85,
+            "minLprRecognitionConfidence": 0.5,
+            "minLprStateRecognitionConfidence": 0.5,
+            "serviceAppointmentSettings": {
+              "allowedDaysBefore": 7,
+              "allowedDaysAfter": 7,
+              "mustHaveAppointment": true,
+              "validators": []
+            },
+            "notifyApproach": {
+              "approachType": "SERVICE_ADVISOR",
+              "type": "SERVICE_ADVISOR"
+            },
+            "overrides": null,
+            "type": "NOTIFY_SERVICE_ADVISOR"
+          },
+          {
+            "triggerType": "PEOPLE_CONGESTION",
+            "enabled": true,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "PEOPLE_CONGESTION"
+          },
+          {
+            "triggerType": "STALL_EMPTY",
+            "enabled": true,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "STALL_EMPTY"
+          },
+          {
+            "triggerType": "STALL_IDLE",
+            "enabled": true,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "STALL_IDLE"
+          },
+          {
+            "triggerType": "TECHNICIAN_IDLE",
+            "enabled": true,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "TECHNICIAN_IDLE"
+          },
+          {
+            "triggerType": "VALUABLE_TRADE_IN",
+            "enabled": true,
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "America/New_York"
+            },
+            "rememberForDays": 90,
+            "vehicleSelectors": [
+              {
+                "minAge": 1,
+                "maxAge": 25,
+                "make": ".*",
+                "model": ".*",
+                "trim": ".*",
+                "minValue": 500,
+                "maxValue": 999999,
+                "minMileage": 0,
+                "maxMileage": 80000
+              }
+            ],
+            "minLprDetectionConfidence": 0.85,
+            "minLprRecognitionConfidence": 0.5,
+            "minLprStateRecognitionConfidence": 0.5,
+            "textProvider": {
+              "providerType": "CARFAX",
+              "enabled": true,
+              "supportInitOnOpenRo": true,
+              "supportSendToBusinesses": false,
+              "supportSendToInternalRepairOrders": false,
+              "maxRoAgeInDays": 2147483647,
+              "maxInventoryAgeInDays": 90,
+              "salesPhoneNumber": "877-729-9700",
+              "offerPhoneNumber": "+17812189606",
+              "ignoreProvider": {
+                "providerType": "SKAI",
+                "type": "SKAI"
+              },
+              "chatBotProvider": {
+                "providerType": "SKAI",
+                "flowName": "flow_delay_20251208",
+                "confusionHandler": {
+                  "handlerType": "REPEAT_PROMPT",
+                  "templates": [
+                    {
+                      "locale": "en_US",
+                      "value": "Sorry, I did not understand - ${PROMPT_MESSAGE}"
+                    },
+                    {
+                      "locale": "es_US",
+                      "value": "Lo siento, no entendí. - ${PROMPT_MESSAGE}"
+                    }
+                  ],
+                  "type": "REPEAT_PROMPT"
+                },
+                "delayHandler": {
+                  "handlerType": "NO_DELAY",
+                  "type": "NO_DELAY"
+                },
+                "staleHandler": {
+                  "handlerType": "STATIC",
+                  "botCustomerInbound": {
+                    "enabled": true,
+                    "staleAfterSeconds": 900
+                  },
+                  "customerInbound": {
+                    "enabled": true,
+                    "staleAfterSeconds": 900
+                  },
+                  "employeeOutbound": {
+                    "enabled": true,
+                    "staleAfterSeconds": 900
+                  },
+                  "terminate": {
+                    "enabled": true,
+                    "staleAfterSeconds": 2592000
+                  },
+                  "type": "STATIC"
+                },
+                "testStrategy": {
+                  "strategyType": "NONE",
+                  "type": "NONE"
+                },
+                "overrides": {
+                  "promptOverrides": [
+                    {
+                      "promptName": "firstMessage",
+                      "confusionHandler": {
+                        "handlerType": "REPEAT_PROMPT",
+                        "templates": [
+                          {
+                            "locale": "en_US",
+                            "value": "Please accept my apologies for any inconvenience.  To comply with State and Federal regulations on Text Compliance, we need you to respond with a YES to send you more information.  Please reply with YES if you'd like to see our offer."
+                          },
+                          {
+                            "locale": "es_US",
+                            "value": "Le ruego acepte mis disculpas por cualquier inconveniente. Para cumplir con las normativas estatales y federales sobre el envío de mensajes de texto, necesitamos que responda con un \"SÍ\" para poder enviarle más información. Por favor, responda con un \"SÍ\" si desea conocer nuestra oferta."
+                          }
+                        ],
+                        "type": "REPEAT_PROMPT"
+                      },
+                      "delayHandler": {
+                        "handlerType": "FIXED_DELAY",
+                        "delayAsSeconds": 30,
+                        "type": "FIXED_DELAY"
+                      },
+                      "templates": [
+                        {
+                          "locale": "en_US",
+                          "value": "Hi ${CONTACT_NAME}, It's Greg from the Vehicle Exchange team at ${ORGANIZATION_NAME}. As we service your vehicle, can I give you a quick estimate of its current market value? Reply YES to see the offer or STOP to opt out. "
+                        },
+                        {
+                          "locale": "es_US",
+                          "value": "Hola ${CONTACT_NAME}, bienvenido al departamento de servicio de ${ORGANIZATION_NAME}. Tu ${VEHICLE_YEAR} ${VEHICLE_MAKE} tiene mucha demanda, y nos gustaría comprarlo. ¿Puedo enviarte nuestra oferta por mensaje de texto? Al enviar \"SI\", nos permite enviarte nuestra oferta; \"STOP\" para cancelar. Para obtener ayuda, usa \"AYUDA\". Se aplican tarifas por mensaje de texto y datos. Text 1 for English."
+                        }
+                      ],
+                      "isFirstPrompt": false,
+                      "isLastPrompt": false
+                    },
+                    {
+                      "promptName": "serviceOfferRedirect",
+                      "delayHandler": {
+                        "handlerType": "FIXED_DELAY",
+                        "delayAsSeconds": 30,
+                        "type": "FIXED_DELAY"
+                      },
+                      "responses": [
+                        {
+                          "responseType": "REGEX",
+                          "id": "1781089929396",
+                          "orderIndex": 99,
+                          "actions": [
+                            {
+                              "actionType": "SET_STATUS",
+                              "status": "IN_PROGRESS_CONFUSED",
+                              "type": "SET_STATUS"
+                            },
+                            {
+                              "actionType": "SEND_NOTIFICATION",
+                              "notificationName": "CONFUSED",
+                              "type": "SEND_NOTIFICATION"
+                            }
+                          ],
+                          "lookFor": [
+                            ".*"
+                          ],
+                          "type": "REGEX"
+                        }
+                      ],
+                      "isFirstPrompt": false,
+                      "isLastPrompt": false
+                    },
+                    {
+                      "promptName": "offerDelay",
+                      "confusionHandler": {
+                        "handlerType": "REPEAT_PROMPT",
+                        "templates": [
+                          {
+                            "locale": "en_US",
+                            "value": "Great! Please confirm with a simple yes or no if your vehicle is the ${VEHICLE}."
+                          },
+                          {
+                            "locale": "es_US",
+                            "value": "¡Genial! Por favor, confirme con un simple sí o no si su vehículo es el ${VEHICLE}."
+                          }
+                        ],
+                        "type": "REPEAT_PROMPT"
+                      },
+                      "delayHandler": {
+                        "handlerType": "FIXED_DELAY",
+                        "delayAsSeconds": 60,
+                        "type": "FIXED_DELAY"
+                      },
+                      "templates": [
+                        {
+                          "locale": "en_US",
+                          "value": "Great! I will start researching right away. Quick question: to be most helpful, are you mainly?  \n1. Open to trading up to something newer\n2. Looking to sell it outright.\n3. Just curious what it's worth. \nFeel free to just reply to the answer that defines your status."
+                        },
+                        {
+                          "locale": "es_US",
+                          "value": "¡Genial! Por favor, permítame unos minutos para revisar la información de su vehículo y asegurarme de brindarle la información más precisa. Le responderé lo antes posible con más información. ¿Le parece bien?"
+                        }
+                      ],
+                      "isFirstPrompt": false,
+                      "isLastPrompt": false
+                    },
+                    {
+                      "promptName": "sendOffer",
+                      "delayHandler": {
+                        "handlerType": "FIXED_DELAY",
+                        "delayAsSeconds": 30,
+                        "type": "FIXED_DELAY"
+                      },
+                      "templates": [
+                        {
+                          "locale": "en_US",
+                          "value": "Thanks for letting me know! After researching, your vehicle's current market value is approximately ${OFFER_LOW}. However, as a valued Bonnell Ford customer, we believe your vehicle qualifies for up to ${OFFER_HIGH} on a new trade-in today. Would you be open to exploring your options if the numbers worked in your favor?"
+                        },
+                        {
+                          "locale": "es_US",
+                          "value": "Genial, considerando los precios actuales del mercado, pensamos que entre ${OFFER_LOW} y ${OFFER_HIGH}, suponiendo que esté en buen estado. ¿Te interesaría venderlo o intercambiarlo?"
+                        }
+                      ],
+                      "responses": [
+                        {
+                          "responseType": "REGEX",
+                          "id": "1781089929396",
+                          "orderIndex": 99,
+                          "actions": [
+                            {
+                              "actionType": "SET_STATUS",
+                              "status": "IN_PROGRESS_CONFUSED",
+                              "type": "SET_STATUS"
+                            },
+                            {
+                              "actionType": "SEND_NOTIFICATION",
+                              "notificationName": "CONFUSED",
+                              "type": "SEND_NOTIFICATION"
+                            }
+                          ],
+                          "lookFor": [
+                            ".*"
+                          ],
+                          "type": "REGEX"
+                        }
+                      ],
+                      "isFirstPrompt": false,
+                      "isLastPrompt": false
+                    },
+                    {
+                      "promptName": "whereAreYou",
+                      "delayHandler": {
+                        "handlerType": "FIXED_DELAY",
+                        "delayAsSeconds": 30,
+                        "type": "FIXED_DELAY"
+                      },
+                      "templates": [
+                        {
+                          "locale": "en_US",
+                          "value": "I appreciate the update! I will gather some options for you shortly. Are you still at the dealership?"
+                        },
+                        {
+                          "locale": "es_US",
+                          "value": "¡Genial! ¿Sigues en el concesionario?"
+                        }
+                      ],
+                      "responses": [
+                        {
+                          "responseType": "REGEX",
+                          "id": "1781089929396",
+                          "orderIndex": 99,
+                          "actions": [
+                            {
+                              "actionType": "SET_STATUS",
+                              "status": "IN_PROGRESS_CONFUSED",
+                              "type": "SET_STATUS"
+                            },
+                            {
+                              "actionType": "SEND_NOTIFICATION",
+                              "notificationName": "CONFUSED",
+                              "type": "SEND_NOTIFICATION"
+                            }
+                          ],
+                          "lookFor": [
+                            ".*"
+                          ],
+                          "type": "REGEX"
+                        }
+                      ],
+                      "isFirstPrompt": false,
+                      "isLastPrompt": false
+                    },
+                    {
+                      "promptName": "newOfferDelay",
+                      "delayHandler": {
+                        "handlerType": "FIXED_DELAY",
+                        "delayAsSeconds": 30,
+                        "type": "FIXED_DELAY"
+                      },
+                      "responses": [
+                        {
+                          "responseType": "REGEX",
+                          "id": "1781089929396",
+                          "orderIndex": 99,
+                          "actions": [
+                            {
+                              "actionType": "SET_STATUS",
+                              "status": "IN_PROGRESS_CONFUSED",
+                              "type": "SET_STATUS"
+                            },
+                            {
+                              "actionType": "SEND_NOTIFICATION",
+                              "notificationName": "CONFUSED",
+                              "type": "SEND_NOTIFICATION"
+                            }
+                          ],
+                          "lookFor": [
+                            ".*"
+                          ],
+                          "type": "REGEX"
+                        }
+                      ],
+                      "isFirstPrompt": false,
+                      "isLastPrompt": false
+                    },
+                    {
+                      "promptName": "newOffer",
+                      "delayHandler": {
+                        "handlerType": "FIXED_DELAY",
+                        "delayAsSeconds": 30,
+                        "type": "FIXED_DELAY"
+                      },
+                      "templates": [
+                        {
+                          "locale": "en_US",
+                          "value": "No Problem ${CONTACT_NAME}! Our brief virtual assessment, ranging up to ${OFFER_HIGH}, is valid for the next 7 days. If you would like to learn how to add an extended service package to your ${VEHICLE}, please call ${ORGANIZATION_PHONE} so we can discuss it in more detail. Thanks!"
+                        },
+                        {
+                          "locale": "es_US",
+                          "value": "No hay problema, ${CONTACT_NAME}. Si cree que una oferta superior podría ser útil, infórmenos. Quizás podamos aprobar una cantidad mayor. ¿Le gustaría hablar con uno de nuestros expertos?"
+                        }
+                      ],
+                      "responses": [
+                        {
+                          "responseType": "REGEX",
+                          "id": "1781089929396",
+                          "orderIndex": 99,
+                          "actions": [
+                            {
+                              "actionType": "SET_STATUS",
+                              "status": "IN_PROGRESS_CONFUSED",
+                              "type": "SET_STATUS"
+                            },
+                            {
+                              "actionType": "SEND_NOTIFICATION",
+                              "notificationName": "CONFUSED",
+                              "type": "SEND_NOTIFICATION"
+                            }
+                          ],
+                          "lookFor": [
+                            ".*"
+                          ],
+                          "type": "REGEX"
+                        }
+                      ],
+                      "isFirstPrompt": false,
+                      "isLastPrompt": false
+                    },
+                    {
+                      "promptName": "findCustomer",
+                      "delayHandler": {
+                        "handlerType": "FIXED_DELAY",
+                        "delayAsSeconds": 30,
+                        "type": "FIXED_DELAY"
+                      },
+                      "templates": [
+                        {
+                          "locale": "en_US",
+                          "value": "#set($Integer = 0)\n#set($hourOfDay = $Integer.parseInt($nowLocal.substring(11, 13)))\n#set($response = \"I'm on my way into the dealership, so I will give you a call once I reach the store.\")\n#if($hourOfDay >= 9)\n    #set($response = \"Perfect! I'll meet you at the customer lounge.\")\n#end\n${response}"
+                        },
+                        {
+                          "locale": "es_US",
+                          "value": "¡Perfecto! Nos vemos en la sala de clientes."
+                        }
+                      ],
+                      "isFirstPrompt": false,
+                      "isLastPrompt": false
+                    },
+                    {
+                      "promptName": "callCustomer",
+                      "delayHandler": {
+                        "handlerType": "FIXED_DELAY",
+                        "delayAsSeconds": 30,
+                        "type": "FIXED_DELAY"
+                      },
+                      "isFirstPrompt": false,
+                      "isLastPrompt": false
+                    }
+                  ]
+                },
+                "type": "SKAI"
+              },
+              "leadGenProvider": {
+                "providerType": "NONE",
+                "type": "NONE"
+              },
+              "priceModel": {
+                "modelType": "CARFAX_V2",
+                "rules": [
+                  {
+                    "priority": 0,
+                    "label": "Generic",
+                    "vehicleSelectors": [
+                      {
+                        "minAge": -1,
+                        "maxAge": 99,
+                        "make": ".*",
+                        "model": ".*",
+                        "trim": ".*",
+                        "minValue": 0,
+                        "maxValue": 999999,
+                        "minMileage": 0,
+                        "maxMileage": 999999
+                      }
+                    ],
+                    "approach": {
+                      "approachType": "MIN_MAX",
+                      "minValue": {
+                        "selector": "LOWER_OF",
+                        "certified": [],
+                        "retail": [],
+                        "wholesale": [
+                          {
+                            "consider": "FAIR",
+                            "adjustedBy": 0,
+                            "multipliedBy": 1
+                          }
+                        ]
+                      },
+                      "maxValue": {
+                        "selector": "HIGHER_OF",
+                        "certified": [],
+                        "retail": [],
+                        "wholesale": [
+                          {
+                            "consider": "EXCELLENT",
+                            "adjustedBy": 0,
+                            "multipliedBy": 1
+                          }
+                        ]
+                      },
+                      "type": "MIN_MAX"
+                    }
+                  }
+                ],
+                "type": "CARFAX_V2"
+              },
+              "repairOrderValidators": [],
+              "serviceAppointmentSettings": null,
+              "locationIds": [
+                "O4TMHT9B01"
+              ],
+              "type": "CARFAX"
+            },
+            "type": "VALUABLE_TRADE_IN"
+          },
+          {
+            "triggerType": "VEHICLE_ARRIVED",
+            "enabled": false,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "minLprDetectionConfidence": 0.85,
+            "minLprRecognitionConfidence": 0.5,
+            "minLprStateRecognitionConfidence": 0.5,
+            "type": "VEHICLE_ARRIVED"
+          },
+          {
+            "triggerType": "VEHICLE_CONGESTION",
+            "enabled": true,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "VEHICLE_CONGESTION"
+          },
+          {
+            "triggerType": "VEHICLE_IDLE",
+            "enabled": true,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "VEHICLE_IDLE"
+          },
+          {
+            "triggerType": "VEHICLE_NOT_WALKED_AROUND",
+            "enabled": false,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "VEHICLE_NOT_WALKED_AROUND"
+          },
+          {
+            "triggerType": "VEHICLE_PRESENT",
+            "enabled": false,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "VEHICLE_PRESENT"
+          },
+          {
+            "triggerType": "VEHICLE_WALKAROUND",
+            "enabled": true,
+            "cameraIds": [],
+            "enabledSchedule": {
+              "sunday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "monday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "tuesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "wednesday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "thursday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "friday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "saturday": [
+                {
+                  "start": "00:00:00",
+                  "end": "23:59:59.000000059"
+                }
+              ],
+              "zoneId": "UTC"
+            },
+            "type": "VEHICLE_WALKAROUND"
+          }
+        ],
+        "metrics": [],
+        "features": [],
+        "enhancers": [],
+        "callbacks": [],
+        "callback": null,
+        "licensePlateHandler": {
+          "licensePlateToVin": {
+            "provider": "CARFAX",
+            "metadata": {
+              "carfax.location.id": "O4TMHT9B01"
+            },
+            "maxDecodeAttempts": 5
+          },
+          "licensePlateDetection": {
+            "provider": "PADDLE_PADDLE",
+            "metadata": {},
+            "minLprDetectionConfidence": 0.55,
+            "minLprRecognitionConfidence": 0.6,
+            "regions": []
+          },
+          "excludedLicensePlates": []
+        },
+        "dms": {
+          "providerType": "CDK",
+          "repairOrderValidators": [],
+          "serviceAppointmentValidators": [],
+          "fiSaleValidators": [],
+          "serviceAdvisors": [],
+          "label": "CDK",
+          "allowFISales": false,
+          "allowRepairOrders": true,
+          "allowServiceAppointments": true,
+          "subscriptionId": "1072e278-e7fc-4dd8-9e0d-7f53eb0be3f8",
+          "serviceDepartmentId": "D100007925",
+          "fiSaleDepartmentId": "",
+          "provenance": "1072e278-e7fc-4dd8-9e0d-7f53eb0be3f8:::D100007925",
+          "type": "CDK"
+        },
+        "hardware": [
+          {
+            "skaiboxId": "EfFCi-PPgoK4HAr_-b3vXQ",
+            "screenshotAllowedTimeForCaptureInSeconds": 30,
+            "licensePlateDetection": {
+              "provider": "PADDLE_PADDLE",
+              "metadata": {},
+              "minLprDetectionConfidence": 0.85,
+              "minLprRecognitionConfidence": 0.5,
+              "regions": []
+            },
+            "nvr": {
+              "archiveVideoEnabled": false,
+              "uploadArchiveVideo": false,
+              "retrainingVideoEnabled": false,
+              "uploadRetrainingVideo": false,
+              "maxArchiveVideoHistoryDays": 30,
+              "maxRetrainingVideoHistoryDays": 30,
+              "recordDuringOffHours": false,
+              "maxFrameDays": 3,
+              "diskSpaceChecking": false,
+              "diskSpaceHighInMb": 0,
+              "diskSpaceLowInMb": 0,
+              "cameraNVRSettings": []
+            }
+          }
+        ],
+        "inventory": {
+          "providerType": "VAUTO",
+          "expiresDays": 720,
+          "storeId": "MP89226",
+          "type": "VAUTO"
+        },
+        "application": "SKAI"
+      },
+      {
+        "productType": "SKAI_VISION",
+        "productConfigId": "f9a5f45a-2300-4481-a028-397f96be569f",
+        "status": {
+          "currentState": "ENABLED",
+          "statusHistory": []
+        },
+        "enabled": true,
+        "application": "SKAI"
+      }
+    ],
+    "updatedAt": "2026-06-10T11:12:13.86907436Z"
+  }
+}
