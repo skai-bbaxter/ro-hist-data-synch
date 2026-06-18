@@ -1,6 +1,8 @@
+import html
 import json
 import logging
 import os
+import re
 import subprocess
 import sys
 
@@ -20,6 +22,9 @@ logger = logging.getLogger(__name__)
 
 
 GRAPH_API_DEFAULT = "https://graph.microsoft.com/v1.0"
+SKAINET_HC_URL = "https://healthcheck.prod.microservice.skaivision.net/skaibox/summary"
+SKAINET_PC_BASE = "https://productcatalog.prod.microservice.skaivision.net/catalog/config/orgs"
+SKAIBOX_ID_LABEL = "Skaibox ID:"
 
 
 def _required_env(name):
@@ -152,6 +157,87 @@ def get_unread_messages(access_token, graph_api, user_email, folder_id):
         next_url = payload.get("@odata.nextLink")
 
 
+def exit_with_error(message):
+    logger.error(message)
+    sys.exit(1)
+
+
+def get_message_body(access_token, graph_api, user_email, message_id):
+    url = f"{graph_api}/users/{user_email}/messages/{message_id}"
+    payload = graph_get(access_token, url, params={"$select": "body"})
+    body = payload.get("body") or {}
+    return body.get("content") or ""
+
+
+def _body_to_searchable_text(body_text):
+    text = html.unescape(body_text)
+    text = re.sub(r"<[^>]+>", " ", text)
+    return re.sub(r"\s+", " ", text)
+
+
+def extract_skaibox_id(body_text):
+    searchable = _body_to_searchable_text(body_text)
+    marker_index = searchable.find(SKAIBOX_ID_LABEL)
+    if marker_index == -1:
+        exit_with_error("Skaibox ID not found in email body")
+
+    remainder = searchable[marker_index + len(SKAIBOX_ID_LABEL) :].strip()
+    match = re.match(r"([A-Za-z0-9_-]+)", remainder)
+    if not match:
+        exit_with_error("Skaibox ID not found in email body")
+
+    return match.group(1)
+
+
+def get_org_long_id_from_skaibox(skaibox_id):
+    payload = {
+        "query": "",
+        "skaiboxIds": [skaibox_id],
+        "organizationIds": [],
+        "filterBy": {
+            "monitoredStatus": "ANY",
+            "serverStatus": "ANY",
+            "vpnStatus": "ANY",
+            "serverHealthStatus": ["ANY"],
+            "billingStatus": "ANY",
+            "serverType": ["ANY"],
+            "statusCodes": ["ANY"],
+            "vendors": ["ANY"],
+        },
+        "startIndex": 0,
+        "pageSize": 1,
+    }
+    response = requests.post(
+        SKAINET_HC_URL,
+        json=payload,
+        headers={"Content-Type": "application/json"},
+        timeout=30,
+    )
+    response.raise_for_status()
+    items = response.json().get("items") or []
+    if not items:
+        exit_with_error(f"No org found for Skaibox ID: {skaibox_id}")
+
+    org_long_id = (items[0].get("organization") or {}).get("longId")
+    if not org_long_id:
+        exit_with_error(f"No org found for Skaibox ID: {skaibox_id}")
+
+    return org_long_id
+
+
+def get_dms_subscription_id(org_long_id, skaibox_id):
+    response = requests.get(f"{SKAINET_PC_BASE}/{org_long_id}", timeout=30)
+    response.raise_for_status()
+    products = (response.json().get("productConfig") or {}).get("products") or []
+    for product in products:
+        if product.get("productType") == "SKAI_BOX":
+            subscription_id = (product.get("dms") or {}).get("subscriptionId")
+            if subscription_id:
+                return subscription_id
+
+    exit_with_error(f"No DMS Subscription ID found for Skaibox ID: {skaibox_id}")
+
+
 def company_name_from_subject(subject, subject_prefix):
     if not subject.startswith(subject_prefix):
         return None
@@ -197,6 +283,15 @@ def main():
             continue
 
         matched_count += 1
+        body_text = get_message_body(access_token, graph_api, user_email, message["id"])
+        skaibox_id = extract_skaibox_id(body_text)
+        org_long_id = get_org_long_id_from_skaibox(skaibox_id)
+        dms_subscription_id = get_dms_subscription_id(org_long_id, skaibox_id)
+
+        print(f"Subject: {subject}")
+        print(f"Skaibox ID: {skaibox_id}")
+        print(f"DMS Subscription ID: {dms_subscription_id}")
+
         return_code = call_hubspot_company_script(company_name)
         if return_code == 0:
             processed_count += 1

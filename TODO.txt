@@ -18,6 +18,8 @@ SCRATCHPAD
 
 Short OrgID: EfFCiTINay-4HAr_-b3vXQ
 Skaibox ID: EfFCi-PPgoK4HAr_-b3vXQ
+Activation Email Sender: noreply@fortellis.io
+Activation Email Subject: SKAIVISION Activation Details
 Activation Email Date: 5/4/26
 Organization:	BONNELL MOTORS INC.
 Activated:	04 May 2026 by Steven Bonnell
