@@ -312,6 +312,45 @@ def print_displayed_count_statistics(counts: list[int]) -> None:
         print(f"  {label}: {val:.6g}")
 
 
+def print_project_ro_history_data_load_range(
+    load_start_date: str,
+    displayed_rows: list[tuple[str, int]],
+) -> None:
+    active = [cnt for _, cnt in displayed_rows if cnt > 0]
+    if not active:
+        print("Every active day is at or above the average")
+        sys.exit(1)
+
+    daily_avg = statistics.mean(active)
+    sorted_rows = sorted(displayed_rows, key=lambda row: row[0])
+
+    first_normal_date: str | None = None
+    for ds, cnt in sorted_rows:
+        if cnt > 0 and cnt >= daily_avg:
+            first_normal_date = ds
+            break
+
+    if first_normal_date is None:
+        qualifying_dates = [
+            ds for ds, cnt in sorted_rows if cnt > 0 and cnt < daily_avg
+        ]
+    else:
+        qualifying_dates = [
+            ds
+            for ds, cnt in sorted_rows
+            if cnt > 0 and cnt < daily_avg and ds < first_normal_date
+        ]
+
+    if not qualifying_dates:
+        print("Every active day is at or above the average")
+        sys.exit(1)
+
+    load_end_date = date.fromisoformat(max(qualifying_dates)).strftime("%m-%d-%Y")
+    print("\nProject RO History Data Load Range")
+    print(f"Load Start Date: {load_start_date}")
+    print(f"Load End Date: {load_end_date}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Verify repair-order history by day over a date range."
@@ -382,7 +421,7 @@ def main() -> None:
 
     rows.sort(key=lambda x: x[0], reverse=True)
 
-    displayed_counts: list[int] = []
+    displayed_rows: list[tuple[str, int]] = []
     print(f"{'Date':<24}{'Count':>8}")
     for ds, cnt in rows:
         d_row = date.fromisoformat(ds)
@@ -390,8 +429,10 @@ def main() -> None:
             continue
         if cnt == 0 and is_utc_sunday(d_row):
             continue
-        displayed_counts.append(cnt)
+        displayed_rows.append((ds, cnt))
         print(f"{ds:<24}{cnt:>8}")
+
+    displayed_counts = [cnt for _, cnt in displayed_rows]
 
     zero_dates_in_range: list[date] = []
     for ds, cnt in rows:
@@ -465,6 +506,8 @@ def main() -> None:
 
     if args.stats:
         print_displayed_count_statistics(displayed_counts)
+
+    print_project_ro_history_data_load_range(args.start_date, displayed_rows)
 
 
 if __name__ == "__main__":
